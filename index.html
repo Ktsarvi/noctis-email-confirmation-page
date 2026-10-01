@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Confirmed - Noctis AI</title>
+    <meta
+      name="description"
+      content="Your email has been confirmed. Welcome to Noctis AI."
+    />
+    <link rel="icon" type="image/png" href="./icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --violet-50: #f5f3ff;
+        --violet-100: #ede9fe;
+        --violet-400: #a78bfa;
+        --violet-600: #7c3aed;
+        --indigo-600: #4f46e5;
+        --indigo-950: #1e1b4b;
+        --gray-400: #9ca3af;
+        --gray-500: #6b7280;
+        --white: #ffffff;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        font-family: "Inter", system-ui, sans-serif;
+        background-color: var(--violet-50);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 24px 20px;
+      }
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.35;
+        pointer-events: none;
+        animation: float 8s ease-in-out infinite alternate;
+      }
+      body::before {
+        width: 480px;
+        height: 480px;
+        background: radial-gradient(circle, #a78bfa, #4f46e5);
+        top: -120px;
+        right: -120px;
+      }
+      body::after {
+        width: 360px;
+        height: 360px;
+        background: radial-gradient(circle, #c4b5fd, #818cf8);
+        bottom: -80px;
+        left: -80px;
+        animation-delay: -4s;
+      }
+      @keyframes float {
+        from {
+          transform: translateY(0) scale(1);
+        }
+        to {
+          transform: translateY(30px) scale(1.06);
+        }
+      }
+      .card {
+        position: relative;
+        background: var(--white);
+        border-radius: 24px;
+        padding: 48px 36px 40px;
+        max-width: 420px;
+        width: 100%;
+        box-shadow:
+          0 4px 24px rgba(79, 70, 229, 0.12),
+          0 1px 4px rgba(0, 0, 0, 0.06);
+        text-align: center;
+        animation: slideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      }
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(28px) scale(0.97);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      .app-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 20px;
+        margin: 0 auto 24px;
+        display: block;
+        box-shadow: 0 4px 16px rgba(79, 70, 229, 0.25);
+      }
+      .check-badge {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          var(--indigo-600),
+          var(--violet-600)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 24px;
+        box-shadow: 0 8px 24px rgba(79, 70, 229, 0.35);
+        animation: popIn 0.6s 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      }
+      @keyframes popIn {
+        from {
+          opacity: 0;
+          transform: scale(0.5);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      .check-badge svg {
+        width: 30px;
+        height: 30px;
+        stroke: white;
+        stroke-width: 2.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+      }
+      .check-path {
+        stroke-dasharray: 40;
+        stroke-dashoffset: 40;
+        animation: drawCheck 0.45s 0.65s ease forwards;
+      }
+      @keyframes drawCheck {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+      .section-label {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        color: var(--gray-400);
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+      h1 {
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--indigo-950);
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        margin-bottom: 10px;
+      }
+      .subtext {
+        font-size: 14px;
+        color: var(--gray-500);
+        line-height: 1.6;
+        margin-bottom: 32px;
+      }
+      .divider {
+        height: 1px;
+        background: #f3f4f6;
+        margin: 0 -8px 28px;
+      }
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 16px 24px;
+        background: linear-gradient(
+          135deg,
+          var(--indigo-600),
+          var(--violet-600)
+        );
+        color: white;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        border: none;
+        border-radius: 16px;
+        cursor: pointer;
+        text-decoration: none;
+        box-shadow: 0 4px 16px rgba(79, 70, 229, 0.35);
+        transition:
+          opacity 0.18s,
+          transform 0.18s,
+          box-shadow 0.18s;
+      }
+      .btn-primary:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+        box-shadow: 0 8px 24px rgba(79, 70, 229, 0.45);
+      }
+      .btn-primary:active {
+        opacity: 0.8;
+        transform: translateY(0);
+      }
+      .footer-note {
+        margin-top: 20px;
+        font-size: 12px;
+        color: var(--gray-400);
+      }
+      .footer-note a {
+        color: var(--violet-600);
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .footer-note a:hover {
+        text-decoration: underline;
+      }
+      #countdown-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--violet-100);
+        color: var(--violet-600);
+        font-size: 12px;
+        font-weight: 600;
+        border-radius: 999px;
+        padding: 4px 12px;
+        margin-top: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card" role="main">
+      <img src="./icon.png" alt="Noctis AI icon" class="app-icon" />
+      <div class="check-badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <polyline class="check-path" points="4,13 9,18 20,7" />
+        </svg>
+      </div>
+      <p class="section-label">Email confirmed</p>
+      <h1>You're all set! &#x1F389;</h1>
+      <p class="subtext">
+        Your email address has been verified. Welcome to
+        <strong>Noctis AI</strong> &mdash; time to create your first magical
+        bedtime story.
+      </p>
+      <div class="divider"></div>
+      <a
+        id="open-app-btn"
+        href="noctis-ai://auth/confirmed"
+        class="btn-primary"
+        aria-label="Open Noctis AI app"
+      >
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M12 2L2 7l10 5 10-5-10-5z" />
+          <path d="M2 17l10 5 10-5" />
+          <path d="M2 12l10 5 10-5" />
+        </svg>
+        Open Noctis AI
+      </a>
+      <div id="countdown-chip" aria-live="polite">
+        <svg
+          width="12"
+          height="12"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="12 6 12 12 16 14" />
+        </svg>
+        Redirecting in <span id="timer">5</span>s
+      </div>
+      <p class="footer-note">
+        Didn't request this?
+        <a href="mailto:support@noctisai.app">Contact support</a>
+      </p>
+    </div>
+    <script>
+      var seconds = 5;
+      var timerEl = document.getElementById("timer");
+      var btnEl = document.getElementById("open-app-btn");
+      var chipEl = document.getElementById("countdown-chip");
+      var interval = setInterval(function () {
+        seconds -= 1;
+        if (timerEl) timerEl.textContent = String(seconds);
+        if (seconds <= 0) {
+          clearInterval(interval);
+          window.location.href = "noctis-ai://auth/confirmed";
+        }
+      }, 1000);
+      if (btnEl) {
+        btnEl.addEventListener("click", function () {
+          clearInterval(interval);
+          if (chipEl) chipEl.style.display = "none";
+        });
+      }
+    </script>
+  </body>
+</html>
