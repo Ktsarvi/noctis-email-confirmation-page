@@ -8,6 +8,10 @@
       name="description"
       content="Your email has been confirmed. Welcome to Noctis AI."
     />
+    <meta
+      name="apple-itunes-app"
+      content="app-id=6819400097, app-argument=noctis-ai://auth/confirmed"
+    />
     <link rel="icon" type="image/png" href="./icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -306,22 +310,50 @@
       </p>
     </div>
     <script>
+      var APP_ID = "6819400097";
+      var APP_STORE_URL = "https://apps.apple.com/app/id" + APP_ID;
+
+      // Preserve any query parameters or auth tokens from email link
+      var params = window.location.search || "";
+      var hash = window.location.hash || "";
+      var DEEP_LINK_URL = "noctis-ai://auth/confirmed" + params + hash;
+
       var seconds = 5;
       var timerEl = document.getElementById("timer");
       var btnEl = document.getElementById("open-app-btn");
       var chipEl = document.getElementById("countdown-chip");
+
+      if (btnEl) {
+        btnEl.href = DEEP_LINK_URL;
+      }
+
+      function redirectToApp() {
+        var clickedAt = Date.now();
+        window.location.href = DEEP_LINK_URL;
+
+        // Fallback to App Store if app is not installed / doesn't open within 2s
+        setTimeout(function () {
+          if (!document.hidden && Date.now() - clickedAt < 2500) {
+            window.location.href = APP_STORE_URL;
+          }
+        }, 2000);
+      }
+
       var interval = setInterval(function () {
         seconds -= 1;
         if (timerEl) timerEl.textContent = String(seconds);
         if (seconds <= 0) {
           clearInterval(interval);
-          window.location.href = "noctis-ai://auth/confirmed";
+          redirectToApp();
         }
       }, 1000);
+
       if (btnEl) {
-        btnEl.addEventListener("click", function () {
+        btnEl.addEventListener("click", function (e) {
+          e.preventDefault();
           clearInterval(interval);
           if (chipEl) chipEl.style.display = "none";
+          redirectToApp();
         });
       }
     </script>
